@@ -92,13 +92,13 @@ export function Passes() {
                 {/* Circular Vintage Compass Seal (Safari style adapted to Gold/Imperial colors) */}
                 <div className="flex flex-col items-center justify-center p-1.5 min-[350px]:p-3 border border-dashed border-[#C5A059]/40 rounded-full w-16 h-16 min-[350px]:w-20 min-[350px]:h-20 md:w-24 md:h-24 shrink-0 relative select-none bg-white/5 shadow-xs z-10">
                   <span className="text-[4px] min-[350px]:text-[5px] md:text-[6px] font-sans font-extrabold tracking-[0.25em] text-[#C5A059] uppercase absolute top-1.5 min-[350px]:top-2 md:top-3">
-                    ERICKA
+                    {siteConfig.client.name}
                   </span>
                   <div className="w-9 h-9 min-[350px]:w-12 min-[350px]:h-12 md:w-14 md:h-14 rounded-full border border-dashed border-[#C5A059]/30 flex flex-col items-center justify-center bg-black/10">
                     <Compass className="w-4.5 h-4.5 min-[350px]:w-6 min-[350px]:h-6 md:w-7 md:h-7 text-[#C5A059] stroke-[1.2]" />
                   </div>
                   <span className="text-[4px] min-[350px]:text-[5px] md:text-[6px] font-sans tracking-[0.2em] text-neutral-400 uppercase absolute bottom-1 min-[350px]:bottom-1.5 md:bottom-3">
-                    19 junio
+                    {siteConfig.event.date.day} {siteConfig.event.date.month.toLowerCase()}
                   </span>
                 </div>
               </div>

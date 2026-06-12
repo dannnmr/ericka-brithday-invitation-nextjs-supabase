@@ -26,10 +26,29 @@ const playfair = Playfair_Display({
 
 import { siteConfig } from "@/config/invitation";
 
+const getSiteUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL;
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  // Fallback to the production Vercel deployment URL for Ericka's invitation
+  return "https://ericka-invitation-xv.vercel.app";
+};
+
+const siteUrl = getSiteUrl();
+const formattedDate = `${siteConfig.event.date.day} de ${siteConfig.event.date.month} de ${siteConfig.event.date.year}`;
+const formattedTime = siteConfig.event.time;
+const descriptionText = `Acompáñame a celebrar mis XV Años el ${formattedDate} a las ${formattedTime}. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://alexia-brithday-invitation-nextjs-s.vercel.app/"),
+  metadataBase: new URL(siteUrl),
   title: `Mis XV Años de ${siteConfig.client.name} — ¡Estás Invitado!`,
-  description: `Acompáñame a celebrar mis XV Años el 12 de Junio de 2026 a las 19:00 hrs. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`,
+  description: descriptionText,
   icons: {
     icon: "/images/decorativas_v2/logo_brochev4.png",
     shortcut: "/images/decorativas_v2/logo_brochev4.png",
@@ -37,8 +56,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: `Mis XV Años de ${siteConfig.client.name} — ¡Estás Invitado!`,
-    description: `Acompáñame a celebrar mis XV Años el 12 de Junio de 2026 a las 19:00 hrs. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`,
-    url: "https://alexia-brithday-invitation-nextjs-s.vercel.app/",
+    description: descriptionText,
+    url: siteUrl,
     siteName: `Mis XV - ${siteConfig.client.name}`,
     locale: "es_ES",
     type: "website",
@@ -54,10 +73,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `Mis XV Años de ${siteConfig.client.name} — ¡Estás Invitado!`,
-    description: `Acompáñame a celebrar mis XV Años el 12 de Junio de 2026 a las 19:00 hrs. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`,
+    description: descriptionText,
     images: ["/images/invitation/metadata.jpg"],
   }
 };
+
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 

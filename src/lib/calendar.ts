@@ -1,10 +1,17 @@
 import { siteConfig } from "../config/invitation";
 
 export function getCalendarLinks() {
-  // Junio 12, 2026 a las 7:00 PM Bolivia (UTC-4) → 23:00 UTC (12 Jun 23:00)
-  // Junio 13, 2026 a las 3:00 AM Bolivia (UTC-4) → 07:00 UTC (13 Jun 07:00)
-  const start = "20260612T230000Z";
-  const end   = "20260613T070000Z";
+  // Parse isoDate dynamically in Bolivia timezone (UTC-4)
+  const startDate = new Date(`${siteConfig.event.isoDate}-04:00`);
+  // End date is 8 hours after start
+  const endDate = new Date(startDate.getTime() + 8 * 60 * 60 * 1000);
+
+  const formatUTC = (date: Date) => {
+    return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+  };
+
+  const start = formatUTC(startDate);
+  const end   = formatUTC(endDate);
   
   const title    = encodeURIComponent(`XV Años — ${siteConfig.client.name}`);
   const location = encodeURIComponent(siteConfig.location.address);
