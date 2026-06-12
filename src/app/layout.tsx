@@ -1,0 +1,80 @@
+import type { Metadata } from "next";
+import { Outfit, Great_Vibes, Pinyon_Script, Playfair_Display } from "next/font/google";
+import "./globals.css";
+
+const outfit = Outfit({
+  variable: "--font-sans",
+  subsets: ["latin"],
+});
+
+const greatVibes = Great_Vibes({
+  weight: "400",
+  variable: "--font-script",
+  subsets: ["latin"],
+});
+
+const pinyonScript = Pinyon_Script({
+  weight: "400",
+  variable: "--font-pinyon",
+  subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin"],
+});
+
+import { siteConfig } from "@/config/invitation";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://alexia-brithday-invitation-nextjs-s.vercel.app/"),
+  title: `Mis XV Años de ${siteConfig.client.name} — ¡Estás Invitado!`,
+  description: `Acompáñame a celebrar mis XV Años el 12 de Junio de 2026 a las 19:00 hrs. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`,
+  icons: {
+    icon: "/images/decorativas_v2/logo_brochev4.png",
+    shortcut: "/images/decorativas_v2/logo_brochev4.png",
+    apple: "/images/decorativas_v2/logo_brochev4.png",
+  },
+  openGraph: {
+    title: `Mis XV Años de ${siteConfig.client.name} — ¡Estás Invitado!`,
+    description: `Acompáñame a celebrar mis XV Años el 12 de Junio de 2026 a las 19:00 hrs. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`,
+    url: "https://alexia-brithday-invitation-nextjs-s.vercel.app/",
+    siteName: `Mis XV - ${siteConfig.client.name}`,
+    locale: "es_ES",
+    type: "website",
+    images: [
+      {
+        url: "/images/invitation/metadata.jpg",
+        width: 1200,
+        height: 630,
+        alt: `Invitación a los XV Años de ${siteConfig.client.name}`,
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Mis XV Años de ${siteConfig.client.name} — ¡Estás Invitado!`,
+    description: `Acompáñame a celebrar mis XV Años el 12 de Junio de 2026 a las 19:00 hrs. Una noche mágica llena de amor, música y recuerdos. ¡Espero verte allí!`,
+    images: ["/images/invitation/metadata.jpg"],
+  }
+};
+
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="es">
+      <body
+        className={`${outfit.variable} ${greatVibes.variable} ${pinyonScript.variable} ${playfair.variable} font-sans antialiased`}
+      >
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
