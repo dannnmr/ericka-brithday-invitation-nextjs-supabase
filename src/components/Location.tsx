@@ -221,7 +221,7 @@ export function Location() {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                 style={{ willChange: "transform" }}
-                className="absolute inset-0 w-full h-full text-[#2E1E15] opacity-80 group-hover:opacity-100 transition-opacity"
+                className="absolute inset-0 w-full h-full text-[#FFFFFF] opacity-80 group-hover:opacity-100 transition-opacity"
                 viewBox="0 0 100 100"
               >
                 <path
