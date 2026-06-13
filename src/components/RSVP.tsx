@@ -144,7 +144,7 @@ export function RSVP() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Ej. Jennifer Hernandez"
+                    placeholder="Ej. Daniela Hernandez"
                     className="w-full bg-transparent border-none focus:outline-none focus:ring-0 font-sans text-sm min-[380px]:text-base md:text-xl text-[#FAF4EA] placeholder-[#FAF4EA]/30 tracking-wider font-medium"
                     disabled={isSubmitting}
                     autoComplete="name"

@@ -113,7 +113,7 @@ export function Intro() {
     <>
       {/* Audio Element */}
       <audio ref={audioRef} loop>
-        <source src="/audio/disclosure.mp3" type="audio/mpeg" />
+        <source src="/audio/who_loves_the_sun.mp3" type="audio/mpeg" />
       </audio>
 
       {!isClosed && (

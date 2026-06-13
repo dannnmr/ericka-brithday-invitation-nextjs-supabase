@@ -76,11 +76,11 @@ export function DressCode() {
             <div className="flex flex-col gap-2 text-center max-w-xl w-full mx-auto px-2">
               <div className="flex flex-col items-center gap-2.5">
 
-                {/* Círculos Blanco y Dorado */}
+                {/* Círculos Gold Rose y Dorado */}
                 <div className="flex items-center justify-center gap-4 mb-1">
-                  <div className="w-7 h-7 rounded-full bg-white shadow-xs border border-[#C5A059]/40" />
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#F4D0CB] via-[#B76E79] to-[#8C4B55] shadow-xs border border-[#C5A059]/40" />
                   <div className="w-px h-5 bg-[#C5A059]/20" />
-                  <div className="w-7 h-7 rounded-full bg-[#C5A059] shadow-xs border border-white/20" />
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#E6D5B8] via-[#C5A059] to-[#9A7B3E] shadow-xs border border-white/20" />
                 </div>
 
                 <p className="font-sans text-[10px] md:text-[11px] text-[#FAF4EA]/80 leading-relaxed tracking-[0.2em] uppercase max-w-sm">

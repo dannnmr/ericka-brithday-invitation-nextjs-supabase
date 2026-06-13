@@ -90,7 +90,7 @@ export function Itinerary() {
                     <div className="flex flex-col flex-1 min-w-0 z-20">
                       <div className={`flex items-baseline w-full justify-between md:justify-normal md:w-auto mb-1 ${isEven ? 'flex-row-reverse md:gap-2' : 'flex-row-reverse md:flex-row md:gap-2'}`}>
                         {/* Time */}
-                        <span className="font-sans text-[13px] min-[350px]:text-[15px] md:text-xl font-bold text-[#C5A059] italic tracking-wider shrink-0 mr-1 min-[380px]:mr-3 md:mr-0 z-10 drop-shadow-[0_0_8px_rgba(197,160,89,0.35)]">
+                        <span className="font-sans text-[13px] min-[350px]:text-[15px] md:text-xl font-bold text-[#5C3E2B] italic tracking-wider shrink-0 mr-1 min-[380px]:mr-3 md:mr-0 z-10">
                           {item.time}
                         </span>
 

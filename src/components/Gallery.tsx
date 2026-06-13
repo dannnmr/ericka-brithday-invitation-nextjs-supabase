@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Camera, Image as ImageIcon, UploadCloud, RotateCw, X, Plus, Heart } from "lucide-react";
+import { Camera, Image as ImageIcon, UploadCloud, RotateCw, X, Plus, Heart, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useDropzone } from "react-dropzone";
 import { supabase } from "@/lib/supabase";
 import { compressImage } from "@/lib/imageCompressor";
@@ -295,25 +295,50 @@ export function Gallery() {
                           />
                         </div>
 
-                        <div className="relative overflow-hidden w-full h-full bg-[#f3f3f3] border border-neutral-200 pointer-events-none">
+                        <div
+                          className={`relative overflow-hidden w-full h-full bg-[#f3f3f3] border border-neutral-200 group/img transition-all ${
+                            isTop ? 'cursor-zoom-in pointer-events-auto' : 'pointer-events-none'
+                          }`}
+                          onClick={(e) => {
+                            if (isTop) {
+                              e.stopPropagation();
+                              setSelectedImage(photo.foto_url);
+                            }
+                          }}
+                        >
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src={photo.foto_url}
                             alt="Party memory"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105"
                             draggable="false"
                           />
+                          {/* Overlay for hovering on desktop */}
+                          {isTop && (
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 flex flex-col items-center justify-center gap-1.5 transition-opacity duration-300 pointer-events-none">
+                              <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 shadow-lg scale-90 group-hover/img:scale-100 transition-transform duration-300">
+                                <Maximize2 className="w-4 h-4" />
+                              </div>
+                              <span className="font-sans text-[8px] text-white tracking-[0.2em] uppercase font-bold">Ver Imagen</span>
+                            </div>
+                          )}
+                          {/* Indicator for mobile */}
+                          {isTop && (
+                            <div className="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white md:hidden border border-white/20 shadow-xs pointer-events-none">
+                              <Maximize2 className="w-3.5 h-3.5" />
+                            </div>
+                          )}
                         </div>
                         <div className="mt-3.5 flex justify-between items-center px-1">
 
                           {/* Heart Icon (Gold) */}
                           <Heart className={`w-5 h-5 md:w-6 md:h-6 text-[#C5A059] transition-colors ${isTop ? 'fill-[#C5A059]/20' : 'fill-transparent'}`} />
 
-                          <span className="font-sans text-[9px] md:text-[10px] text-neutral-500 tracking-[0.2em] font-black uppercase pointer-events-none">
-                            {isTop ? 'Desliza →' : ''}
+                          <span className="font-sans text-[8px] md:text-[9px] text-neutral-500 tracking-[0.12em] font-black uppercase pointer-events-none text-center flex-1 px-1">
+                            {isTop ? 'Toca para ampliar' : ''}
                           </span>
 
-                          <ImageIcon
+                          <Maximize2
                             className={`w-5 h-5 md:w-6 md:h-6 transition-colors ${isTop ? 'text-neutral-500 hover:text-neutral-900 cursor-pointer pointer-events-auto' : 'text-neutral-300'}`}
                             onClick={(e) => {
                               if (isTop) {
@@ -329,26 +354,47 @@ export function Gallery() {
                 </AnimatePresence>
               </div>
 
-              {/* Action buttons (Gold & Sage Style) */}
+              {/* Action buttons (Chevron Navigation & Counter) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="flex gap-4 md:gap-8 mt-6 md:mt-10 relative z-20"
+                className="flex items-center gap-6 md:gap-10 mt-6 md:mt-8 relative z-20"
               >
                 <button
-                  onClick={() => { setExitDirection('left'); setCurrentIndex(prev => prev + 1); }}
-                  className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#FAF7F2] shadow-xs flex items-center justify-center text-[#6E7E75] hover:bg-white hover:text-[#2C4A3E] hover:scale-110 active:scale-95 transition-all border border-[#C5A059]/20"
+                  onClick={() => {
+                    if (currentIndex > 0) {
+                      setExitDirection('right');
+                      setCurrentIndex(prev => prev - 1);
+                    }
+                  }}
+                  disabled={currentIndex === 0}
+                  className={`w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#FAF7F2] shadow-xs flex items-center justify-center transition-all border border-[#C5A059]/20 ${
+                    currentIndex === 0
+                      ? 'opacity-40 cursor-not-allowed text-neutral-400'
+                      : 'text-[#2C4A3E] hover:bg-white hover:scale-110 active:scale-95 cursor-pointer'
+                  }`}
+                  aria-label="Foto anterior"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+
+                {/* Contador de Fotos */}
+                <span className="font-sans text-[10px] md:text-xs text-[#2C4A3E] tracking-[0.25em] uppercase font-black min-w-[80px] text-center">
+                  {currentIndex + 1} / {photos.length}
+                </span>
+
+                <button
+                  onClick={() => {
+                    if (currentIndex < photos.length) {
+                      setExitDirection('left');
+                      setCurrentIndex(prev => prev + 1);
+                    }
+                  }}
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#FAF7F2] shadow-xs flex items-center justify-center text-[#2C4A3E] hover:bg-white hover:scale-110 active:scale-95 transition-all border border-[#C5A059]/30 cursor-pointer"
                   aria-label="Siguiente foto"
                 >
-                  <X className="w-5 h-5 md:w-6 md:h-6" />
-                </button>
-                <button
-                  onClick={() => { setExitDirection('right'); setCurrentIndex(prev => prev + 1); }}
-                  className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#FAF7F2] shadow-xs flex items-center justify-center text-[#C5A059] hover:bg-white hover:scale-110 active:scale-95 transition-all border border-[#C5A059]/30"
-                  aria-label="Me gusta"
-                >
-                  <Heart className="w-5 h-5 md:w-6 md:h-6 fill-[#C5A059]" />
+                  <ChevronRight className="w-6 h-6" />
                 </button>
               </motion.div>
             </>
@@ -363,13 +409,13 @@ export function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-100 bg-[#FAF7F2]/95 backdrop-blur-xl flex justify-center items-center p-4 md:p-10"
+            className="fixed inset-0 z-100 bg-[#FAF7F2]/95 backdrop-blur-xl flex justify-center items-center p-4 md:p-10 cursor-zoom-out"
             onClick={() => setSelectedImage(null)}
           >
             <motion.button
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="absolute top-6 right-6 text-[#2C4A3E] hover:text-[#C5A059] transition-colors bg-white shadow-md p-4 rounded-full border border-[#C5A059]/20 z-50 hover:scale-110"
+              className="absolute top-6 right-6 text-[#2C4A3E] hover:text-[#C5A059] transition-colors bg-white shadow-md p-4 rounded-full border border-[#C5A059]/20 z-50 hover:scale-110 cursor-pointer"
               onClick={() => setSelectedImage(null)}
             >
               <X className="w-6 h-6" />
@@ -379,14 +425,14 @@ export function Gallery() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative max-w-5xl w-full h-full flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-5xl w-full h-full flex items-center justify-center pointer-events-none"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={selectedImage}
                 alt="Fullscreen view"
-                className="max-w-full max-h-[90vh] object-contain shadow-md bg-white p-2 border border-[#C5A059]/20"
+                className="max-w-full max-h-[90vh] object-contain shadow-md bg-white p-2 border border-[#C5A059]/20 pointer-events-auto cursor-default"
+                onClick={(e) => e.stopPropagation()}
               />
             </motion.div>
           </motion.div>

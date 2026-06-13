@@ -197,7 +197,7 @@ export const siteConfig: SiteConfig = {
     },
     reservedColorsText: {
       prefix: "LOS COLORES",
-      color1: "BLANCO",
+      color1: "GOLD ROSE",
       color2: "DORADO",
       suffix: "ESTÁN RESERVADOS EXCLUSIVAMENTE PARA LA QUINCEAÑERA.",
     },
