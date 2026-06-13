@@ -144,8 +144,8 @@ export const siteConfig: SiteConfig = {
       month: "Junio",
       year: "2026",
     },
-    time: "20:00 hrs",
-    isoDate: "2026-06-19T20:00:00",
+    time: "19:30 hrs",
+    isoDate: "2026-06-19T19:30:00",
     rsvpDeadline: "16 de Junio",
     topLabel: "Agenda la fecha",
   },
@@ -161,7 +161,7 @@ export const siteConfig: SiteConfig = {
     mainTitle: "Itinerario",
     schedule: [
       {
-        time: "20:00",
+        time: "19:30",
         title: "Recepción",
         description: "Inicio oficial de nuestra noche de gala.",
         image: "/images/decorativas_v2/flor2.png",

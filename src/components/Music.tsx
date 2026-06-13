@@ -49,7 +49,7 @@ export function Music() {
   const visualizerBars = Array.from({ length: 24 });
 
   return (
-    <section className="relative pt-12 pb-6 md:pb-16 px-6 bg-transparent flex flex-col items-center overflow-hidden w-full">
+    <section className="relative pt-4 pb-2 md:pt-6 md:pb-4 px-6 bg-transparent flex flex-col items-center overflow-hidden w-full">
 
       {/* Background Soft Glows */}
       <div className="absolute top-[20%] right-[-10%] w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#C5A059]/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
@@ -63,7 +63,7 @@ export function Music() {
         animationStyle="slideLeft"
       />
 
-      <div className="relative z-10 max-w-4xl w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-10">
+      <div className="relative z-10 max-w-4xl w-full flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
 
         {/* Vinyl interactive widget */}
         <div className="relative w-28 h-28 md:w-32 md:h-32 group flex items-center justify-center shrink-0">
@@ -114,22 +114,22 @@ export function Music() {
         </div>
 
         {/* Right side form */}
-        <div className="flex-1 max-w-md w-full flex flex-col items-center md:items-start card-glass p-6 rounded-3xl">
+        <div className="flex-1 max-w-md w-full flex flex-col items-center md:items-start p-2 md:p-4 rounded-3xl">
 
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center md:text-left mb-4 relative z-10 w-full"
+            className="text-center md:text-left mb-2 relative z-10 w-full"
           >
             <p className="font-sans text-[8px] min-[380px]:text-[9px] md:text-[10px] uppercase tracking-[0.6em] text-[#C5A059] mb-1 font-bold">
               Playlist
             </p>
-            <h3 className="font-pinyon text-4xl min-[380px]:text-5xl md:text-6xl bg-gradient-to-b from-[#FAF4EA] via-[#FAF4EA] to-[#C5A059] bg-clip-text text-transparent mb-1 py-3 leading-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+            <h3 className="font-pinyon text-4xl min-[380px]:text-5xl md:text-6xl text-[#2C4A3E] mb-0.5 py-1 leading-normal">
               Música
             </h3>
-            <p className="font-sans text-[8px] min-[380px]:text-[9px] md:text-[10px] text-[#FAF4EA]/80 tracking-[0.15em] font-light uppercase">
+            <p className="font-sans text-[8px] min-[380px]:text-[9px] md:text-[10px] text-[#8B7355] tracking-[0.15em] font-medium uppercase">
               ¿Qué canción no puede faltar en la pista?
             </p>
           </motion.div>
@@ -142,10 +142,10 @@ export function Music() {
             transition={{ duration: 0.6 }}
             className="w-full relative"
           >
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full relative z-20">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full relative z-20">
 
               {/* Input pill */}
-              <div className="relative flex items-center w-full p-1 bg-[#FAF7F2]/80 border border-[#C5A059]/25 rounded-full shadow-xs focus-within:border-[#2C4A3E]">
+              <div className="relative flex items-center w-full p-1 bg-[#2E1E15] border border-[#C5A059]/35 rounded-full shadow-sm focus-within:border-[#C5A059]">
 
                 <input
                   id="song"
@@ -154,7 +154,7 @@ export function Music() {
                   value={song}
                   onChange={(e) => setSong(e.target.value)}
                   placeholder="Escribe el nombre o artista..."
-                  className="flex-1 min-w-0 bg-transparent border-none focus:outline-none focus:ring-0 px-4 md:px-5 font-sans font-medium text-[10px] min-[380px]:text-xs text-[#2C4A3E] placeholder-[#2C4A3E]/50 tracking-wide h-8 min-[380px]:h-10"
+                  className="flex-1 min-w-0 bg-transparent border-none focus:outline-none focus:ring-0 px-4 md:px-5 font-sans font-medium text-[10px] min-[380px]:text-xs text-[#FAF4EA] placeholder-[#FAF4EA]/50 tracking-wide h-8 min-[380px]:h-10"
                   disabled={isSubmitting || isSuccess}
                   autoComplete="off"
                 />
@@ -162,16 +162,16 @@ export function Music() {
                 <button
                   type="submit"
                   disabled={isSubmitting || isSuccess}
-                  className="flex items-center justify-center shrink-0 w-8 h-8 min-[380px]:w-10 min-[380px]:h-10 md:w-auto md:px-6 bg-[#2C4A3E] border border-[#2C4A3E] text-white rounded-full transition-all duration-300 disabled:opacity-50 group cursor-pointer shadow-xs hover:bg-[#2C4A3E]/90"
+                  className="flex items-center justify-center shrink-0 w-8 h-8 min-[380px]:w-10 min-[380px]:h-10 md:w-auto md:px-6 bg-[#C5A059] border border-[#C5A059] text-[#2E1E15] rounded-full transition-all duration-300 disabled:opacity-50 group cursor-pointer shadow-xs hover:bg-[#C5A059]/90 font-bold"
                 >
                   {isSubmitting ? (
-                    <RotateCw className="w-3.5 h-3.5 animate-spin text-white" />
+                    <RotateCw className="w-3.5 h-3.5 animate-spin text-[#2E1E15]" />
                   ) : isSuccess ? (
-                    <CheckCircle2 className="w-4.5 h-4.5 text-white" />
+                    <CheckCircle2 className="w-4.5 h-4.5 text-[#2E1E15]" />
                   ) : (
                     <>
-                      <Send className="w-3 h-3 md:w-3.5 md:h-3.5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                      <span className="hidden md:block ml-2 font-sans tracking-[0.25em] uppercase text-[8px] font-bold text-white">Sugerir</span>
+                      <Send className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#2E1E15] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      <span className="hidden md:block ml-2 font-sans tracking-[0.25em] uppercase text-[8px] font-extrabold text-[#2E1E15]">Sugerir</span>
                     </>
                   )}
                 </button>
