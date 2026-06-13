@@ -167,19 +167,19 @@ export const siteConfig: SiteConfig = {
         image: "/images/decorativas_v2/champagne.png",
       },
       {
-        time: "21:00",
+        time: "22:00",
         title: "Ceremonia",
         description: "El momento especial: vals y brindis.",
         image: "/images/decorativas/coctail.png",
       },
       {
-        time: "21:30",
+        time: "22:30",
         title: "Fiesta a bailar",
         description: "Apertura oficial de la pista de baile.",
         image: "/images/decorativas/fiesta.png",
       },
       {
-        time: "23:00",
+        time: "00:00",
         title: "Hora Loca",
         description: "¡Máxima energía y sorpresas en la pista!",
         image: "/images/decorativas/megafon.png",
