@@ -9,11 +9,11 @@ import { AnimatedSection } from "./ui/AnimatedSection";
 
 // Helper to override default party/disco icons with botanical safari icons
 const getItineraryIcon = (imagePath: string) => {
-  if (imagePath.includes("boladisco2.png")) return "/images/decorativas_v2/hojas.png";
+  if (imagePath.includes("boladisco2.png")) return "/images/decorativas_v2/champagne.png";
   if (imagePath.includes("flor.png")) return "/images/decorativas_v2/flor_dorada.png";
-  if (imagePath.includes("coctail.png")) return "/images/decorativas_v2/flor_cafe.png";
-  if (imagePath.includes("fiesta.png")) return "/images/decorativas_v2/flor_dorada.png";
-  if (imagePath.includes("megafon.png")) return "/images/decorativas_v2/hojas.png";
+  if (imagePath.includes("coctail.png")) return "/images/decorativas_v2/martini_ericka.png";
+  if (imagePath.includes("fiesta.png")) return "/images/decorativas_v2/bola_disco_dorada.png";
+  if (imagePath.includes("megafon.png")) return "/images/decorativas_v2/leopardo_rugiendo.png";
   return imagePath;
 };
 

@@ -85,7 +85,8 @@ export function DressCode() {
 
                 <p className="font-sans text-[10px] md:text-[11px] text-[#FAF4EA]/80 leading-relaxed tracking-[0.2em] uppercase max-w-sm">
                   {siteConfig.dressCode.reservedColorsText.prefix}{" "}
-                  <strong className="text-[#C5A059] font-black tracking-[0.22em]">
+                  {/* color 1: #F4D0CB (Gold Rose) */}
+                  <strong className="text-[#F4D0CB] font-black tracking-[0.22em]">
                     {siteConfig.dressCode.reservedColorsText.color1}
                   </strong>{" "}
                   Y{" "}

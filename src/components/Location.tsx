@@ -36,7 +36,7 @@ export function Location() {
       <FloatingDecoration
         src="/images/decorativas_v2/leopardo_acostado2.png"
         alt="Hojas Selva Izquierda"
-        className="bottom-[-5%] left-0 w-full h-85 md:h-72 opacity-70"
+        className="bottom-[-5%] left-0 w-full h-80 md:h-72 opacity-50"
         imgClassName="object-cover object-bottom"
         animationStyle="float"
       />
@@ -187,14 +187,25 @@ export function Location() {
           {/* Novotel Detail card */}
           <div className="flex flex-col items-center text-center px-4 w-full max-w-3xl mb-4">
             <SectionHeader
-              title={siteConfig.location.venueName}
-              subtitle={siteConfig.location.topLabel}
-              className="mb-4 mt-8 overflow-visible"
-              titleClassName="leading-normal py-3 px-1 text-[#2E1E15]"
-              subtitleClassName="text-[#C5A059] font-bold mb-2"
+              title={
+                <span style={{ textShadow: "0 2px 10px rgba(250, 244, 234, 0.95), 0 0 5px rgba(250, 244, 234, 0.8)" }}>
+                  {siteConfig.location.venueName}
+                </span>
+              }
+              subtitle={
+                <span style={{ textShadow: "0 2px 8px rgba(250, 244, 234, 0.9), 0 0 4px rgba(250, 244, 234, 0.7)" }}>
+                  {siteConfig.location.topLabel}
+                </span>
+              }
+              className="mb-4 mt-4 overflow-visible"
+              titleClassName="leading-normal py-1 text-[#2E1E15]"
+              subtitleClassName="text-[#C5A059] font-bold mb-1"
             />
 
-            <p className="font-sans text-sm md:text-base tracking-[0.2em] text-[#8B7355] uppercase leading-relaxed max-w-md">
+            <p
+              className="font-sans text-sm md:text-base tracking-[0.2em] text-[#8B7355] uppercase leading-relaxed max-w-md"
+              style={{ textShadow: "0 2px 8px rgba(250, 244, 234, 0.95), 0 0 4px rgba(250, 244, 234, 0.8)" }}
+            >
               {siteConfig.location.address}
             </p>
 
@@ -204,7 +215,10 @@ export function Location() {
           {/* Interactive Button */}
           <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 w-full max-w-2xl justify-center mb-6 mt-2">
             <div className="flex flex-col items-center md:items-start text-center md:text-left">
-              <span className="font-sans text-lg md:text-xl font-bold uppercase tracking-widest text-[#2E1E15]">
+              <span
+                className="font-sans text-lg md:text-xl font-bold uppercase tracking-widest text-[#2E1E15]"
+                style={{ textShadow: "0 2px 10px rgba(250, 244, 234, 0.95), 0 0 5px rgba(250, 244, 234, 0.8)" }}
+              >
                 {siteConfig.location.buttonText}
               </span>
             </div>
@@ -215,13 +229,16 @@ export function Location() {
               rel="noopener noreferrer"
               className="relative flex items-center justify-center w-30 h-30 md:w-32 md:h-32 group cursor-pointer shrink-0"
             >
-              <div className="absolute inset-0 rounded-full border border-[#C5A059]/30 scale-90 group-hover:scale-100 transition-transform duration-700" />
+              <div className="absolute inset-0 rounded-full border border-[#2E1E15]/40 scale-90 group-hover:scale-100 transition-transform duration-700" />
 
               <motion.svg
                 animate={{ rotate: 360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                style={{ willChange: "transform" }}
-                className="absolute inset-0 w-full h-full text-[#FFFFFF] opacity-80 group-hover:opacity-100 transition-opacity"
+                style={{
+                  willChange: "transform",
+                  filter: "drop-shadow(0px 2px 3px rgba(250, 244, 234, 0.95)) drop-shadow(0px 0px 5px rgba(250, 244, 234, 0.8))"
+                }}
+                className="absolute inset-0 w-full h-full text-[#2E1E15] opacity-80 group-hover:opacity-100 transition-opacity"
                 viewBox="0 0 100 100"
               >
                 <path
@@ -240,8 +257,8 @@ export function Location() {
                 </text>
               </motion.svg>
 
-              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#2E1E15] shadow-md border border-[#C5A059]/20 flex items-center justify-center group-hover:bg-[#C5A059] transition-colors duration-500 relative z-10">
-                <Navigation className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:-rotate-45 transition-all duration-500" />
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#FFFFFF] shadow-md border border-[#2E1E15]/20 flex items-center justify-center group-hover:bg-[#C5A059] transition-colors duration-500 relative z-10">
+                <Navigation className="w-5 h-5 md:w-6 md:h-6 text-[#2E1E15] group-hover:-rotate-45 transition-all duration-500" />
               </div>
             </a>
           </div>

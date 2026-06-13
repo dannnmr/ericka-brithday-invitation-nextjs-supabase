@@ -164,7 +164,7 @@ export const siteConfig: SiteConfig = {
         time: "19:30",
         title: "Recepción",
         description: "Inicio oficial de nuestra noche de gala.",
-        image: "/images/decorativas_v2/flor2.png",
+        image: "/images/decorativas_v2/champagne.png",
       },
       {
         time: "21:00",
