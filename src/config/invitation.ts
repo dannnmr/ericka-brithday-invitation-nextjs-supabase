@@ -8,7 +8,7 @@ export interface ParentsConfig {
   topLabel: string; // e.g., "Con la bendición de mis padres"
   fatherName: string;
   motherName: string;
-  godparents?: string;
+  godparents?: string | string[];
   invitationText: string;
 }
 
@@ -134,7 +134,10 @@ export const siteConfig: SiteConfig = {
     topLabel: "Junto a mis padres y padrinos",
     fatherName: "Enrique Dominguez",
     motherName: "Ericka Ayma",
-    godparents: "Brandy Siles y Oliver Morón",
+    godparents: [
+      "Brandy Siles y Oliver Morón",
+      "Mariana Cardozo y Roberto Alvarez"
+    ],
     invitationText:
       "Acompáñame a celebrar una noche mágica e inolvidable al cumplir mis XV años.",
   },

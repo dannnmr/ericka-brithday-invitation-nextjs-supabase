@@ -86,9 +86,26 @@ export function Parents() {
                   <p className="font-sans text-[8px] md:text-[9px] tracking-[0.4em] text-[#C5A059] uppercase mb-2 font-bold">
                     Y mis padrinos
                   </p>
-                  <h3 className="font-pinyon text-2xl md:text-4xl text-[#FAF4EA] transition-all duration-300 group-hover:text-[#C5A059]">
-                    {siteConfig.parents.godparents}
-                  </h3>
+                  {Array.isArray(siteConfig.parents.godparents) ? (
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 max-w-2xl mx-auto">
+                      {siteConfig.parents.godparents.map((godparent, index) => (
+                        <React.Fragment key={index}>
+                          {index > 0 && (
+                            <span className="text-[#C5A059]/55 text-[10px] md:text-[12px] my-1 md:my-0 select-none">✦</span>
+                          )}
+                          <div className="text-center px-0.2">
+                            <h3 className="font-pinyon text-2xl md:text-3xl text-[#FAF4EA] transition-all duration-300 group-hover:text-[#C5A059] leading-relaxed">
+                              {godparent}
+                            </h3>
+                          </div>
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  ) : (
+                    <h3 className="font-pinyon text-2xl md:text-4xl text-[#FAF4EA] transition-all duration-300 group-hover:text-[#C5A059]">
+                      {siteConfig.parents.godparents}
+                    </h3>
+                  )}
                 </div>
               </>
             )}
